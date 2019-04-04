@@ -1,0 +1,13 @@
+version: '3'
+services:
+  restaurant-svc:
+    #name: restaurant-svc_test
+    build: $GOHOME/src/github.com/restaurantonthego/restaurant-svc
+  restaurant-svc-2:
+    build: $GOHOME/src/github.com/restaurantonthego/restaurant-svc 
+  client:
+    build: $GOHOME/src/github.com/restaurantonthego/client
+    depends_on:
+      - restaurant-svc
+    environment:
+      - RESTAURANT_URL=restaurant-svc:50051
